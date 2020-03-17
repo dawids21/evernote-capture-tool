@@ -7,12 +7,15 @@ import com.evernote.clients.NoteStoreClient;
 import com.evernote.clients.UserStoreClient;
 import com.evernote.edam.type.Note;
 
-public class EDAMDemo {
+/**
+ * EvernoteAccount
+ */
+class EvernoteAccount {
     private UserStoreClient userStore;
     private NoteStoreClient noteStore;
     private String newNoteGuid;
     
-    public EDAMDemo(String token) throws Exception {
+    EvernoteAccount(String token) throws Exception {
         // Set up the UserStore client and check that we can speak to the server
         EvernoteAuth evernoteAuth = new EvernoteAuth(EvernoteService.SANDBOX, token);
         ClientFactory factory = new ClientFactory(evernoteAuth);
@@ -30,11 +33,11 @@ public class EDAMDemo {
         noteStore = factory.createNoteStoreClient();
     }
 
-    public void createNote() throws Exception {
+    void createNote(String captureData) throws Exception {
         // To create a new note, simply create a new Note object and fill in
         // attributes such as the note's title.
         Note note = new Note();
-        note.setTitle("Test note from EDAMDemo.java");
+        note.setTitle("Capture");
     
         // The content of an Evernote note is represented using Evernote Markup
         // Language
@@ -44,7 +47,9 @@ public class EDAMDemo {
         String content = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
             + "<!DOCTYPE en-note SYSTEM \"http://xml.evernote.com/pub/enml2.dtd\">"
             + "<en-note>"
-            + "<span style=\"color:green;\">Here's the Evernote logo:</span><br/>"
+            + "<span style=\"color:black;\">"
+            + captureData
+            + "</span><br/>"
             + "</en-note>";
         note.setContent(content);
     
@@ -57,5 +62,5 @@ public class EDAMDemo {
         System.out.println("Successfully created a new note with GUID: "
             + newNoteGuid);
         System.out.println();
-      }
+    }
 }
