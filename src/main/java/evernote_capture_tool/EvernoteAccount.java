@@ -17,7 +17,7 @@ class EvernoteAccount {
     
     EvernoteAccount(String token) throws Exception {
         // Set up the UserStore client and check that we can speak to the server
-        EvernoteAuth evernoteAuth = new EvernoteAuth(EvernoteService.SANDBOX, token);
+        EvernoteAuth evernoteAuth = new EvernoteAuth(EvernoteService.PRODUCTION, token);
         ClientFactory factory = new ClientFactory(evernoteAuth);
         userStore = factory.createUserStoreClient();
     
