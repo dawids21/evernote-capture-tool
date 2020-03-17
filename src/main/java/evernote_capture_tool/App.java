@@ -6,7 +6,10 @@ import java.util.Scanner;
 public class App {
     
     public static void main(String[] args) throws Exception {
-        File file = new File("token.txt");
+        File jarFile = new File(App.class.getProtectionDomain().getCodeSource().getLocation()
+        .getFile());        
+        String path = jarFile.getParent() + File.separator + "token.txt";
+        File file = new File(path);
         Scanner input = new Scanner(file);
         String token = input.nextLine();
         input.close();
