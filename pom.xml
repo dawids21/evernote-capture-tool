@@ -8,7 +8,7 @@
   <artifactId>evernote_capture_tool</artifactId>
   <version>1.0</version>
 
-  <name>evernote_capture_tool</name>
+  <name>Evernote Capture Tool</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
